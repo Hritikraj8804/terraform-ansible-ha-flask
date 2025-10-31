@@ -3,11 +3,13 @@
   ansible.builtin.apt:
     update_cache: yes
 
-- name: 2. Install Python, pip, and Flask
+- name: 2. Install Python, pip, and Flask prerequisites
   ansible.builtin.apt:
     name: 
       - python3
       - python3-pip
+      - python3-venv
+      - python3-dev
     state: present
 
 - name: 3. Install Flask using pip
@@ -24,17 +26,19 @@
     group: ubuntu
     mode: '0755'
 
-- name: 5. Copy Flask application file
+- name: 5. Copy Adventure Game application file
   ansible.builtin.copy:
     src: hello_app.py
     dest: /opt/flask_app/hello_app.py
     owner: ubuntu
     group: ubuntu
 
-- name: 6. Start the Flask application using nohup (runs in background)
+- name: 6. Restart the Flask application
   ansible.builtin.shell: |
+    # 6a. Stop the old application process on port 8000
     fuser -k 8000/tcp || true 
-    /usr/bin/nohup /usr/bin/python3 /opt/flask_app/hello_app.py > /tmp/flask.log 2>&1 &
+    # 6b. Start the new application
+    /usr/bin/nohup /usr/bin/python3 /opt/flask_app/hello_app.py > /tmp/hello_app.log 2>&1 &
   args:
     chdir: /opt/flask_app
   changed_when: true
