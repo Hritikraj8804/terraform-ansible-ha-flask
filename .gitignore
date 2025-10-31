@@ -1,0 +1,14 @@
+# Terraform State and Configuration
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+crash.log
+
+# Ansible Inventory (Sensitive IPs)
+ansible/inventory.ini
+
+# SSH Keys (NEVER commit private keys)
+*.pem
+*.pub
+~/.ssh/*
