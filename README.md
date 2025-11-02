@@ -46,7 +46,7 @@ ha-flask-project/
 
 
 ##  HA Flask Deployment Workflow
-
+```
 +------------------+     +-----------------------+     +-------------------+     +---------------------+     +---------------------+     +----------------------+
 | 1. Local Dev Env | --> | 2. Code Repository    | --> | 3. Terraform Init | --> | 4. Terraform Apply  | --> | 5. Ansible Playbook | --> | 6. Application Access|
 | (KodeKloud)      |     | (ha-flask-project/)   |     | (Downloads AWS    |     | (Builds AWS Infra)  |     | (Configures EC2s)   |     |(Browser/Verification)|
@@ -65,6 +65,7 @@ ha-flask-project/
                                                                                     |     (Live)          |
                                                                                     +---------------------+
 
+```
 
 ## 🚀 Deployment Instructions
 
