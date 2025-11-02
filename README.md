@@ -44,6 +44,28 @@ ha-flask-project/
 
 ```
 
+
+##  HA Flask Deployment Workflow
+
++------------------+     +-----------------------+     +-------------------+     +---------------------+     +---------------------+     +----------------------+
+| 1. Local Dev Env | --> | 2. Code Repository    | --> | 3. Terraform Init | --> | 4. Terraform Apply  | --> | 5. Ansible Playbook | --> | 6. Application Access|
+| (KodeKloud)      |     | (ha-flask-project/)   |     | (Downloads AWS    |     | (Builds AWS Infra)  |     | (Configures EC2s)   |     |(Browser/Verification)|
+|                  |     | - main.tf             |     | Provider)         |     | - VPC, Subnets      |     | - Installs Python   |     | - http://IP:8000     |
+|                  |     | - ansible/*           |     |                   |     | - IGW, RouteTable   |     | - Deploys Flask App |     | - Two different IPs  |
+|                  |     | - .gitignore          |     |                   |     | - Security Group    |     | - Starts Flask Svc  |     | - HA Adventure Game  |
+|                  |     |                       |     |                   |     | - 2 EC2 Instances   |     |                     |     |                      |
+|                  |     |                       |     |                   |     | - Generates         |     |                     |     |                      |
+|                  |     |                       |     |                   |     |ansible/inventory.ini|     |                     |     |                      |
++------------------+     +-----------------------+     +-------------------+     +---------------------+     +---------------------+     +----------------------+
+                                                                                              |
+                                                                                              | (Wait 90s for SSH)
+                                                                                              V
+                                                                                    +---------------------+
+                                                                                    | 4a. AWS Resources   |
+                                                                                    |     (Live)          |
+                                                                                    +---------------------+
+
+
 ## 🚀 Deployment Instructions
 
 These instructions assume you are running from a **Linux-like environment (e.g., KodeKloud Terminal)** with Terraform and Ansible installed.
