@@ -1,5 +1,8 @@
 # HA Flask Deployment: Terraform + Ansible Integration (V2)
 
+<img width="1024" height="1024" alt="Gemini_Generated_Image_tgn0kbtgn0kbtgn0" src="https://github.com/user-attachments/assets/a7bce62d-96ab-443a-9454-80e747903127" />
+
+
 ## 🌟 Project Overview: Highly Available Infrastructure as Code
 
 This project demonstrates a production-ready **Infrastructure as Code (IaC)** workflow by seamlessly integrating **Terraform** for cloud resource provisioning (Day 0) and **Ansible** for configuration management and application deployment (Day 1).
